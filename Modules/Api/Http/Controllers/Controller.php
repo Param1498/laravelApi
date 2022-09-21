@@ -1,14 +1,14 @@
 <?php
 
-namespace Module\Api\Http\Controllers;
+namespace Modules\Api\Http\Controllers;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Traits\ResponseTrait;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests , ResponseTrait;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, ResponseTrait;
 }

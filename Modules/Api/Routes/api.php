@@ -17,13 +17,23 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
+Route::group(['namespace' => '\Modules\Api\Http\Controllers'], function()
+{
+    Route::get('/', 'ApiController@index');
 
-Route::group(['namespace'=> '\Modules\Api\Http\Controllers'],function(){
+	Route::group(['prefix' => 'v1'], function () {
+		// Route::get('/getdl/{token}','UserController@getUserImage');
+		Route::POST('/api-login', 'Auth\LoginController@apiLogin')->name('apilogin');
+		Route::get('/verify/{otp}/{mobile}','Auth\LoginController@verifyOtp');
 
-    Route::group(['prefix'=>'v1'],function(){
-        //to get app state
-        Route::post('api-login',['as'=>'api.login','uses'=>'Auth\LoginController@apiLogin']);
-       // Route::post('api-register', 'Auth\RegisterController@apiRegister')->name('api.register');
-
+	 
+	    Route::post('/register', 'Auth\RegisterController@register')->name('register');
+	    	
+		Route::group(['middleware' => 'jwt.auth'], function () {
+			// Route::get('/getprofile','UserController@getProfile')->name('user.getprofile');
+			Route::group(['prefix'=>'profile'], function(){
+				// Route::put('update','UserController@updateProfile');
+			});
+		});
     });
 });

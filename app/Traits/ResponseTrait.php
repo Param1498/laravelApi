@@ -71,7 +71,7 @@ trait ResponseTrait{
 	 * */
 	public function setErrors(Array $errorsArray){
 
-		$this->setStatus(400);		
+		$this->setStatus(400);
 		$this->ErrorBag = $errorsArray;
 	}
 
